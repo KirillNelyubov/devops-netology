@@ -5,7 +5,7 @@
 
 1. cd это встроенная в shell (bash, dash и др.) команда. Нужна в основном для работы исключительно в среде shell, поэтому делать её внешней смысла нет.
 2. grep -c <some_string> <some_file>
-3. /sbin/init
+3. systemd  (pstree -p) 
 4. ls /root 2>/dev/pts/1 выведет на вторую сессию терминала ошибку "ls: cannot open directory '/root': Permission denied"
 5. sort < file1 > file2 
 6. Ctrl+Alt+F1 переключаемся в tty1, логинимся, Alt+F7 возвращаемся в Xсы, в терминале bash &>/dev/tty1, всё что вводим дальше будет на tty1. 
