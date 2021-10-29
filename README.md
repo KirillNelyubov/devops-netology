@@ -1,23 +1,57 @@
 # devops-netology
 # Kirill Nelyubov
 
-Ответы на задание к занятию «3.2. Работа в терминале, лекция 2":
+Ответы на задание к занятию «3.3. Операционные системы, лекция 1":
 
-1. cd это встроенная в shell (bash, dash и др.) команда. Нужна в основном для работы исключительно в среде shell, поэтому делать её внешней смысла нет.
-2. grep -c <some_string> <some_file>
-3. systemd  (pstree -p) 
-4. ls /root 2>/dev/pts/1 выведет на вторую сессию терминала ошибку "ls: cannot open directory '/root': Permission denied"
-5. sort < file1 > file2 
-6. Ctrl+Alt+F1 переключаемся в tty1, логинимся, Alt+F7 возвращаемся в Xсы, в терминале bash &>/dev/tty1, всё что вводим дальше будет на tty1. 
-7. bash 5>&1 приведёт к перенаправлению дескриптора 5 в stdout. echo netology > /proc/$$/fd/5 вывод на stdout.
-8. ls 5>&2 2>&1 >&5 | grep "test" - выведет результат команды ls в stderr,
+1. chdir("/tmp")
+2. /usr/share/misc/magic.mgc
+  
+    stat("/home/vagrant/.magic.mgc", 0x7ffda8125ce0) = -1 ENOENT (No such file or directory)
 
-   ls test 5>&2 2>&1 >&5 | grep "test" - выдаст ошибку через pipe.
-9. cat /proc/$$/environ - выводит переменные оболочки и окружения сеанса, аналогично ps eww -p $$, printenv, env.
-10. /proc/(PID)/cmdline - содержит команду запуска процесса, 
+    stat("/home/vagrant/.magic", 0x7ffda8125ce0) = -1 ENOENT (No such file or directory)
 
-    /proc/(PID)/exe - ссылка на файл процесса.
-11. cat /proc/cpuinfo | grep "sse". SSE 4.2
-12. По умолчанию ssh при выполнении команды не выделяет pty, чтобы команда выполнялась  в эмуляторе терминала, необходимо запускать ssh с опцией -t (ssh -t localhost 'tty').
-13. Перенесём процесс (например sleep 3600) запущенный в ssh-сессии в screen. Входим по ssh в новую сессию, узнаем PID - ps aux | grep "sleep 3600", далее screen; reptyr (PID); Ctrl+a; d, выходим из ssh сессий, процесс sleep будет работать в screen.
-14. Команда tee читает из stdin и записывает в файл и выводит в stdout. echo string | sudo tee /root/new_file будет работать, потому что sudo применимо к tee, в отличии от sudo echo string > /root/new_file, где перенаправляет shell от пользователя.
+    openat(AT_FDCWD, "/etc/magic.mgc", O_RDONLY) = -1 ENOENT (No such file or directory)
+
+    openat(AT_FDCWD, "/usr/share/misc/magic.mgc", O_RDONLY) = 3
+3. lsof | grep deleted - узнаём PID
+
+   ls -l /proc/(PID)/fd - узнаём дескриптор FD
+
+   echo -n '' > /proc/(PID)/fd/(FD) - обнуляем удалённый файл. 
+4. Зомби-процессы освобождает все свои ресурсы, но оставляет запись в таблице процессов.
+
+5.       PID    COMM               FD ERR PATH
+
+         766    vminfo              6   0 /var/run/utmp
+
+         578    dbus-daemon        -1   2 /usr/local/share/dbus-1/system-services
+
+         578    dbus-daemon        18   0 /usr/share/dbus-1/system-services
+
+         578    dbus-daemon        -1   2 /lib/dbus-1/system-services
+
+         578    dbus-daemon        18   0 /var/lib/snapd/dbus-1/system-services/
+
+6. uname(). Part of the utsname information is also  accessible  via  /proc/sys/ker‐
+       nel/{ostype, hostname, osrelease, version, domainname}.
+7. test -d /tmp/some_dir; echo Hi - последовательно выполнит обе команды.
+
+   test -d /tmp/some_dir && echo Hi - выполнит вторую если первая завершится со статусом 0.
+
+   Использовать && после set -e смысла нет, так как при статусе 1, выполнение следующей команды не будет в любом случае.
+8. -e прерывает выполнение сценария ошибке любой команды.
+
+   -u при попытке подстановки значения не существующей переменной командный
+интерпретатор выдает сообщение об ошибке и, если он - не интерактивный, завершает
+работу с ненулевым статусом выхода
+
+   -x выдаёт команду с результатами подстановок в аргументах
+   
+   -o pipefail если какая-либо команда в конвейере терпит неудачу, этот код возврата будет использоваться как код возврата всего конвейера
+   
+   set -euxo pipefail хорошо подходит для отладки сложных сценариев. Можно увидеть на каком этапе и какая произошла ошибка.
+9. S,S+,Ss,Ssl,Ss+ - прерываемые спящие процессы.
+
+   I, I< - бездействующие процессы ядра.
+   
+   Дополнительные символы это доп характеристики процесса.
