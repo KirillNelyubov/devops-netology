@@ -40,7 +40,7 @@
 2. /opt/node_exporter/default:
 
        OPTS="--collector.disable-defaults --web.disable-exporter-metrics  --collector.cpu --collector.meminfo --collector.diskstats --collector.netstat"
-3. <img src="https://ipev.ru/image/N4lI"/> 
+3. <img src="https://ipev.ru/image/N4lI"/>
 4. По выводу dmesg:
 
           [    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
