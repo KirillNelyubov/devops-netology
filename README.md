@@ -49,7 +49,8 @@
           [    0.000000] kvm-clock: cpu 0, msr 39601001, primary cpu clock
           [    0.000000] kvm-clock: using sched offset of 5730191562 cycles
           [    0.000002] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
-  видно, что ОС стартует под гипервизором KVM.
+   видно, что ОС стартует под гипервизором KVM.
+
 5. sysctl fs.nr_open - системное ограничение на количество открытых файлов (дескрипторов), по умолчанию fs.nr_open = 1048576.
 
    ulimit -Hn, ulimit -Sn - ограничение на пользователя, сессию, по умолчанию 1024.
