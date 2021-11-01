@@ -1,57 +1,70 @@
 # devops-netology
 # Kirill Nelyubov
 
-Ответы на задание к занятию «3.3. Операционные системы, лекция 1":
+Ответы на задание к занятию «3.4. Операционные системы, лекция 2":
 
-1. chdir("/tmp")
-2. /usr/share/misc/magic.mgc
-  
-    stat("/home/vagrant/.magic.mgc", 0x7ffda8125ce0) = -1 ENOENT (No such file or directory)
+1. /lib/systemd/system/node_exporter.service:
 
-    stat("/home/vagrant/.magic", 0x7ffda8125ce0) = -1 ENOENT (No such file or directory)
-
-    openat(AT_FDCWD, "/etc/magic.mgc", O_RDONLY) = -1 ENOENT (No such file or directory)
-
-    openat(AT_FDCWD, "/usr/share/misc/magic.mgc", O_RDONLY) = 3
-3. lsof | grep deleted - узнаём PID
-
-   ls -l /proc/(PID)/fd - узнаём дескриптор FD
-
-   echo -n '' > /proc/(PID)/fd/(FD) - обнуляем удалённый файл. 
-4. Зомби-процесс освобождает все свои ресурсы, но оставляет запись в таблице процессов.
-
-5.       PID    COMM               FD ERR PATH
-
-         766    vminfo              6   0 /var/run/utmp
-
-         578    dbus-daemon        -1   2 /usr/local/share/dbus-1/system-services
-
-         578    dbus-daemon        18   0 /usr/share/dbus-1/system-services
-
-         578    dbus-daemon        -1   2 /lib/dbus-1/system-services
-
-         578    dbus-daemon        18   0 /var/lib/snapd/dbus-1/system-services/
-
-6. uname(). Part of the utsname information is also  accessible  via  /proc/sys/ker‐
-       nel/{ostype, hostname, osrelease, version, domainname}.
-7. test -d /tmp/some_dir; echo Hi - последовательно выполнит обе команды.
-
-   test -d /tmp/some_dir && echo Hi - выполнит вторую если первая завершится со статусом 0.
-
-   Использовать && после set -e смысла нет, так как при статусе 1, выполнение следующей команды не будет в любом случае.
-8. -e прерывает выполнение сценария при ошибке любой команды.
-
-   -u при попытке подстановки значения не существующей переменной командный
-интерпретатор выдает сообщение об ошибке и, если он - не интерактивный, завершает
-работу с ненулевым статусом выхода
-
-   -x выдаёт команду с результатами подстановок в аргументах
+       [Unit]
+       Description=Monitoring Linux host metrics with the Node Exporter
+       Documentation=
+       After=remote-fs.target nss-user-lookup.target
    
-   -o pipefail если какая-либо команда в конвейере терпит неудачу, этот код возврата будет использоваться как код возврата всего конвейера
+       [Service]
+       EnvironmentFile=-/opt/node_exporter/default
+       ExecStart=/opt/node_exporter/node_exporter $OPTS
+       IgnoreSIGPIPE=false
+       KillMode=process
+       Restart=on-failure
    
-   set -euxo pipefail хорошо подходит для отладки сложных сценариев. Можно увидеть на каком этапе и какая произошла ошибка.
-9. S,S+,Ss,Ssl,Ss+ - прерываемые спящие процессы.
+       [Install]
+       WantedBy=multi-user.target
+   sudo systemctl daemon-reload
 
-   I, I< - бездействующие процессы ядра.
-   
-   Дополнительные символы это доп характеристики процесса.
+   sudo systemctl enable node_exporter
+
+   sudo reboot
+
+   sudo systemctl status node_exporter
+
+       ● node_exporter.service - Monitoring Linux host metrics with the Node Exporter
+            Loaded: loaded (/lib/systemd/system/node_exporter.service; enabled; vendor preset: enabled)
+            Active: active (running) since Mon 2021-11-01 13:37:03 UTC; 1h 29min ago
+          Main PID: 1174 (node_exporter)
+             Tasks: 4 (limit: 1071)
+            Memory: 2.5M
+            CGroup: /system.slice/node_exporter.service
+                    └─1174 /opt/node_exporter/node_exporter --collector.disable-defaults --web.disable-exporter-metrics --collector.cpu --collector.meminfo --collector.diskstats --collector.netstat
+
+
+2. /opt/node_exporter/default:
+
+       OPTS="--collector.disable-defaults --web.disable-exporter-metrics  --collector.cpu --collector.meminfo --collector.diskstats --collector.netstat"
+3. <img src="/home/kirill/Изображения/Снимок экрана в 2021-11-01 22-38-52.png"/> 
+4. По выводу dmesg:
+
+          [    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+          [    0.000000] Hypervisor detected: KVM
+          [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+          [    0.000000] kvm-clock: cpu 0, msr 39601001, primary cpu clock
+          [    0.000000] kvm-clock: using sched offset of 5730191562 cycles
+          [    0.000002] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+  видно, что ОС стартует под гипервизором KVM.
+5. sysctl fs.nr_open - системное ограничение на количество открытых файлов (дескрипторов), по умолчанию fs.nr_open = 1048576.
+
+   ulimit -Hn, ulimit -Sn - ограничение на пользователя, сессию, по умолчанию 1024.
+6.     root@vagrant:~# unshare -f -p --mount-proc sleep 1h 
+       ^C
+       root@vagrant:~# ps
+           PID TTY          TIME CMD
+          1500 pts/0    00:00:00 sudo
+          1501 pts/0    00:00:00 bash
+          1669 pts/0    00:00:00 sleep
+          1670 pts/0    00:00:00 ps
+       root@vagrant:~# nsenter -p -t1669 --mount ps
+           PID TTY          TIME CMD
+             1 pts/0    00:00:00 sleep
+             2 pts/0    00:00:00 ps
+7. :(){ :|:& };: - определяет функцию с именем : , которая порождает саму себя (дважды, один канал переходит в другой) и создаёт фон.
+
+   Ограничение на количество процессов в сессии (ulimit -u) не даёт размножиться процессам до краха системы.
