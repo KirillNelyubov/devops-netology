@@ -1,255 +1,83 @@
 # devops-netology
 # Kirill Nelyubov
 
-Ответы на задание к занятию "3.5. Файловые системы":
+Ответы на задание к занятию "3.6. Компьютерные сети, лекция 1":
 
-2. Не могут. Жёсткая ссылка это запись в таблице разделов файловой системы, которая указывает на объект(файл) в ФС, имеющий права доступа и владельца.
-3. 
-       kirill@kirill-mint:~/VirtualBox VMs$ vagrant destroy
-           default: Are you sure you want to destroy the 'default' VM? [y/N] y
-       ==> default: Destroying VM and associated drives...
-       kirill@kirill-mint:~/VirtualBox VMs$ vi Vagrantfile
-       kirill@kirill-mint:~/VirtualBox VMs$ vagrant up
-       Bringing machine 'default' up with 'virtualbox' provider...
-       ==> default: Importing base box 'bento/ubuntu-20.04'...
-       ==> default: Matching MAC address for NAT networking...
-       ==> default: Checking if box 'bento/ubuntu-20.04' version '202107.28.0' is up to date...
-       ==> default: Setting the name of the VM: VirtualBoxVMs_default_1635871696045_14574
-       ==> default: Clearing any previously set network interfaces...
-       ==> default: Preparing network interfaces based on configuration...
-           default: Adapter 1: nat
-       ==> default: Forwarding ports...
-           default: 22 (guest) => 2222 (host) (adapter 1)
-       ==> default: Running 'pre-boot' VM customizations...
-       ==> default: Booting VM...
-       ==> default: Waiting for machine to boot. This may take a few minutes...
-           default: SSH address: 127.0.0.1:2222
-           default: SSH username: vagrant
-           default: SSH auth method: private key
-           default: Warning: Remote connection disconnect. Retrying...
-           default: Warning: Connection reset. Retrying...
-           default: Warning: Remote connection disconnect. Retrying...
-           default: Warning: Connection reset. Retrying...
-           default: 
-           default: Vagrant insecure key detected. Vagrant will automatically replace
-           default: this with a newly generated keypair for better security.
-           default: 
-           default: Inserting generated public key within guest...
-           default: Removing insecure key from the guest if it's present...
-           default: Key inserted! Disconnecting and reconnecting using new SSH key...
-       ==> default: Machine booted and ready!
-       ==> default: Checking for guest additions in VM...
-       ==> default: Mounting shared folders...
-           default: /vagrant => /home/kirill/VirtualBox VMs
-       kirill@kirill-mint:~/VirtualBox VMs$ vagrant ssh
-       Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
-       
-        * Documentation:  https://help.ubuntu.com
-        * Management:     https://landscape.canonical.com
-        * Support:        https://ubuntu.com/advantage
-       
-        System information disabled due to load higher than 2.0
-       
-       
-       This system is built by the Bento project by Chef Software
-       More information can be found at https://github.com/chef/bento
-       vagrant@vagrant:~$ sudo -i
-       root@vagrant:~# lsblk
-       NAME                 MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-       sda                    8:0    0   64G  0 disk 
-       ├─sda1                 8:1    0  512M  0 part /boot/efi
-       ├─sda2                 8:2    0    1K  0 part 
-       └─sda5                 8:5    0 63.5G  0 part 
-         ├─vgvagrant-root   253:0    0 62.6G  0 lvm  /
-         └─vgvagrant-swap_1 253:1    0  980M  0 lvm  [SWAP]
-       sdb                    8:16   0  2.5G  0 disk 
-       sdc                    8:32   0  2.5G  0 disk 
-4. 
-       root@vagrant:~# fdisk /dev/sdb
-       
-       Welcome to fdisk (util-linux 2.34).
-       Changes will remain in memory only, until you decide to write them.
-       Be careful before using the write command.
-       
-       Device does not contain a recognized partition table.
-       Created a new DOS disklabel with disk identifier 0x19edcbed.
-       
-       Command (m for help): n
-       Partition type
-          p   primary (0 primary, 0 extended, 4 free)
-          e   extended (container for logical partitions)
-       Select (default p): 
-       
-       Using default response p.
-       Partition number (1-4, default 1): 
-       First sector (2048-5242879, default 2048): 
-       Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-5242879, default 5242879): +2G
-       
-       Created a new partition 1 of type 'Linux' and of size 2 GiB.
-       
-       Command (m for help): n
-       Partition type
-          p   primary (1 primary, 0 extended, 3 free)
-          e   extended (container for logical partitions)
-       Select (default p): 
-       
-       Using default response p.
-       Partition number (2-4, default 2): 
-       First sector (4196352-5242879, default 4196352): 
-       Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-5242879, default 5242879): 
-       
-       Created a new partition 2 of type 'Linux' and of size 511 MiB.
-       
-       Command (m for help): p
-       Disk /dev/sdb: 2.51 GiB, 2684354560 bytes, 5242880 sectors
-       Disk model: VBOX HARDDISK   
-       Units: sectors of 1 * 512 = 512 bytes
-       Sector size (logical/physical): 512 bytes / 512 bytes
-       I/O size (minimum/optimal): 512 bytes / 512 bytes
-       Disklabel type: dos
-       Disk identifier: 0x19edcbed
-       
-       Device     Boot   Start     End Sectors  Size Id Type
-       /dev/sdb1          2048 4196351 4194304    2G 83 Linux
-       /dev/sdb2       4196352 5242879 1046528  511M 83 Linux
-       
-       Command (m for help): w
-       The partition table has been altered.
-       Calling ioctl() to re-read partition table.
-       Syncing disks.
-5.     root@vagrant:~# sfdisk -d /dev/sdb | sfdisk -f /dev/sdc
-       Checking that no-one is using this disk right now ... OK
-       
-       Disk /dev/sdc: 2.51 GiB, 2684354560 bytes, 5242880 sectors
-       Disk model: VBOX HARDDISK   
-       Units: sectors of 1 * 512 = 512 bytes
-       Sector size (logical/physical): 512 bytes / 512 bytes
-       I/O size (minimum/optimal): 512 bytes / 512 bytes
-       
-       >>> Script header accepted.
-       >>> Script header accepted.
-       >>> Script header accepted.
-       >>> Script header accepted.
-       >>> Created a new DOS disklabel with disk identifier 0x19edcbed.
-       /dev/sdc1: Created a new partition 1 of type 'Linux' and of size 2 GiB.
-       /dev/sdc2: Created a new partition 2 of type 'Linux' and of size 511 MiB.
-       /dev/sdc3: Done.
-       
-       New situation:
-       Disklabel type: dos
-       Disk identifier: 0x19edcbed
-       
-       Device     Boot   Start     End Sectors  Size Id Type
-       /dev/sdc1          2048 4196351 4194304    2G 83 Linux
-       /dev/sdc2       4196352 5242879 1046528  511M 83 Linux
-       
-       The partition table has been altered.
-       Calling ioctl() to re-read partition table.
-       Syncing disks
-6.     root@vagrant:~# mdadm --create /dev/md1 -l1 -n2 /dev/sd{b1,c1}
-       mdadm: Note: this array has metadata at the start and
-           may not be suitable as a boot device.  If you plan to
-           store '/boot' on this device please ensure that
-           your boot-loader understands md/v1.x metadata, or use
-           --metadata=0.90
-       Continue creating array? y
-       mdadm: Defaulting to version 1.2 metadata
-       mdadm: array /dev/md1 started.
-7.     root@vagrant:~# mdadm --create /dev/md0 -l0 -n2 /dev/sd{b2,c2}
-       mdadm: Defaulting to version 1.2 metadata
-       mdadm: array /dev/md0 started.
-8.     root@vagrant:~# pvcreate /dev/md1 /dev/md0
-         Physical volume "/dev/md1" successfully created.
-         Physical volume "/dev/md0" successfully created.
-9.     root@vagrant:~# vgcreate vg0 /dev/md0 /dev/md1
-         Volume group "vg0" successfully created
-10.     root@vagrant:~# lvcreate -L 100M vg0 /dev/md0
-          Logical volume "lvol0" created.
-11.     root@vagrant:~# lvs
-          LV     VG        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
-          lvol0  vg0       -wi-a----- 100.00m                                                    
-          root   vgvagrant -wi-ao---- <62.54g                                                    
-          swap_1 vgvagrant -wi-ao---- 980.00m                                                    
-        root@vagrant:~# mkfs.ext4 /dev/vg0/lvol0
-        mke2fs 1.45.5 (07-Jan-2020)
-        Creating filesystem with 25600 4k blocks and 25600 inodes
-        
-        Allocating group tables: done                            
-        Writing inode tables: done                            
-        Creating journal (1024 blocks): done
-        Writing superblocks and filesystem accounting information: done
-12.     root@vagrant:~# mkdir /tmp/new
-        root@vagrant:~# mount /dev/vg0/lvol0 /tmp/new
-13.     root@vagrant:~# wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz
-        --2021-11-02 20:05:40--  https://mirror.yandex.ru/ubuntu/ls-lR.gz
-        Resolving mirror.yandex.ru (mirror.yandex.ru)... 213.180.204.183, 2a02:6b8::183
-        Connecting to mirror.yandex.ru (mirror.yandex.ru)|213.180.204.183|:443... connected.
-        HTTP request sent, awaiting response... 200 OK
-        Length: 22188258 (21M) [application/octet-stream]
-        Saving to: ‘/tmp/new/test.gz’
-        
-        /tmp/new/test.gz            100%[=========================================>]  21.16M  5.68MB/s    in 3.8s    
-        
-        2021-11-02 20:05:44 (5.54 MB/s) - ‘/tmp/new/test.gz’ saved [22188258/22188258]
-14.     root@vagrant:~# lsblk
-        NAME                 MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
-        sda                    8:0    0   64G  0 disk  
-        ├─sda1                 8:1    0  512M  0 part  /boot/efi
-        ├─sda2                 8:2    0    1K  0 part  
-        └─sda5                 8:5    0 63.5G  0 part  
-          ├─vgvagrant-root   253:0    0 62.6G  0 lvm   /
-          └─vgvagrant-swap_1 253:1    0  980M  0 lvm   [SWAP]
-        sdb                    8:16   0  2.5G  0 disk  
-        ├─sdb1                 8:17   0    2G  0 part  
-        │ └─md1                9:1    0    2G  0 raid1 
-        └─sdb2                 8:18   0  511M  0 part  
-          └─md0                9:0    0 1018M  0 raid0 
-            └─vg0-lvol0      253:2    0  100M  0 lvm   /tmp/new
-        sdc                    8:32   0  2.5G  0 disk  
-        ├─sdc1                 8:33   0    2G  0 part  
-        │ └─md1                9:1    0    2G  0 raid1 
-        └─sdc2                 8:34   0  511M  0 part  
-          └─md0                9:0    0 1018M  0 raid0 
-            └─vg0-lvol0      253:2    0  100M  0 lvm   /tmp/new
-15.     root@vagrant:~# gzip -t /tmp/new/test.gz
-        root@vagrant:~# echo $?
-        0
-16.     root@vagrant:~# pvmove /dev/md0
-          /dev/md0: Moved: 12.00%
-          /dev/md0: Moved: 100.00%
-        root@vagrant:~# lsblk
-        NAME                 MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
-        sda                    8:0    0   64G  0 disk  
-        ├─sda1                 8:1    0  512M  0 part  /boot/efi
-        ├─sda2                 8:2    0    1K  0 part  
-        └─sda5                 8:5    0 63.5G  0 part  
-          ├─vgvagrant-root   253:0    0 62.6G  0 lvm   /
-          └─vgvagrant-swap_1 253:1    0  980M  0 lvm   [SWAP]
-        sdb                    8:16   0  2.5G  0 disk  
-        ├─sdb1                 8:17   0    2G  0 part  
-        │ └─md1                9:1    0    2G  0 raid1 
-        │   └─vg0-lvol0      253:2    0  100M  0 lvm   /tmp/new
-        └─sdb2                 8:18   0  511M  0 part  
-          └─md0                9:0    0 1018M  0 raid0 
-        sdc                    8:32   0  2.5G  0 disk  
-        ├─sdc1                 8:33   0    2G  0 part  
-        │ └─md1                9:1    0    2G  0 raid1 
-        │   └─vg0-lvol0      253:2    0  100M  0 lvm   /tmp/new
-        └─sdc2                 8:34   0  511M  0 part  
-          └─md0                9:0    0 1018M  0 raid0 
-17.     root@vagrant:~# mdadm /dev/md1 --fail /dev/sdc1
-        mdadm: set /dev/sdc1 faulty in /dev/md1
-18. dmesg:
+2. На 2,4ГГц В России и странах СНГ для использования доступно 13 каналов. Всего 14. При ширине канала 20МГц три не пересекающихся канала. Для 5ГГц диапазона в РФ используется 17 каналов.
+3.     kirill@kirill-mint:~$ grep 38F9D3 /usr/share/nmap/nmap-mac-prefixes
+       38F9D3 Apple
+4. 9001(Ethernet MTU)-20(IP Header)-32(TCP Header)=8949(Payload) 
+5. При нормальном поведении TCP они никогда не должны быть установлены в одном пакете.
+6. Поскольку реч идёт о UDP протоколе, TIME-WAIT в State присутствовать не может, т.к. сокет не ждёт ответа.  
+7.      инициатор                ответчик
+       ESTABLESHED              ESTABLESHED 
+       FIN WAIT 1  >  FIN   >   CLOSE WAIT
+       FIN WAIT 2 < ACK-FIN  <  CLOSE WAIT
+       TIME WAIT   >  ACK   >   LAST ACK
+       CLOSED                   CLOSED
+8. Уникальность сокета определяется четырьмя факторами: 
 
-        [ 5573.942585] md/raid1:md1: Disk failure on sdc1, disabling device.
-                       md/raid1:md1: Operation continuing on 1 devices.
-19.     root@vagrant:~# gzip -t /tmp/new/test.gz 
-        root@vagrant:~# echo $?                  
-        0
-20.     root@vagrant:~# logout
-        vagrant@vagrant:~$ logout
-        Connection to 127.0.0.1 closed.
-        kirill@kirill-mint:~/VirtualBox VMs$ vagrant destroy
-            default: Are you sure you want to destroy the 'default' VM? [y/N] y
-        ==> default: Forcing shutdown of VM...
-        ==> default: Destroying VM and associated drives...
+    1. локальный IP-адрес
+    2. номер локального порта
+    3. удаленный IP-адрес
+    4. номер удаленного порта
+
+     Теоретически с одного IP-адреса можно установить 65535 соединений на каждый порт сервера. Но реально сервер ограничен ресурсами процессора, памяти и т.д.  
+9. Может у клиента, который активно подключается/отключается к удаленной службе. Если клиент был активной стороной завершения TCP-сессии, то это соединение будет заблокировано какое-то время в состоянии TIME_WAIT. Если соединения устанавливаются быстрее чем порты выходят из TIME_WAIT, то свободные порты могут закончиться. К тому же расходуются системные ресурсы.        
+10. Если один фрагмент теряется, то теряется весь пакет, и его надо посылать повторно. Контроль целостности данных ложится на приложение. В TCP соединении контроль осуществляется на уровне протокола.      
+   
+11. Если требуется гарантированная доставка логов с нескольких хостов, то предпочтительнее использовать TCP протокол, к тому же он может обеспечить безопасное(шифрованое) соединение.   
+12.     vagrant@vagrant:~$ sudo ss  -ltp
+        State     Recv-Q    Send-Q       Local Address:Port         Peer Address:Port   Process                                                                         
+        LISTEN    0         4096         127.0.0.53%lo:domain            0.0.0.0:*       users:(("systemd-resolve",pid=610,fd=13))                                      
+        LISTEN    0         128                0.0.0.0:ssh               0.0.0.0:*       users:(("sshd",pid=1353,fd=3))                                                 
+        LISTEN    0         4096               0.0.0.0:sunrpc            0.0.0.0:*       users:(("rpcbind",pid=609,fd=4),("systemd",pid=1,fd=35))                       
+        LISTEN    0         128                   [::]:ssh                  [::]:*       users:(("sshd",pid=1353,fd=4))                                                 
+        LISTEN    0         4096                  [::]:sunrpc               [::]:*       users:(("rpcbind",pid=609,fd=6),("systemd",pid=1,fd=37))                       
+    3-IPv4, 2-IPv6. systemd-resolve, sshd, rpcbind.
+13.     vagrant@vagrant:~$ sudo tcpdump -A -c 1
+        tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+        listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+        21:11:24.325992 IP vagrant.ssh > _gateway.42178: Flags [P.], seq 3940246595:3940246743, ack 6791863, win 62780, length 148
+        E...?.@.@.. 
+        ...
+        .........dC.g..P..<.....n,.#,Tn.m.<7...d<!.......U.g.K|..!C4N.$N..G.,..W....;..\.../.BU..cT?....\.#....~....n..r=...F.....N.,..#:.....wPZ..S.....7.g/zN..m.n+yG..,+M.3.....
+        1 packet captured
+        11 packets received by filter
+        0 packets dropped by kernel
+        vagrant@vagrant:~$ sudo tcpdump -X -c 1
+        tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+        listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+        21:12:09.086026 IP vagrant.ssh > _gateway.42178: Flags [P.], seq 3940248547:3940248583, ack 6792943, win 62780, length 36
+            0x0000:  4510 004c 4021 4000 4006 e26a 0a00 020f  E..L@!@.@..j....
+            0x0010:  0a00 0202 0016 a4c2 eadb 6be3 0067 a6ef  ..........k..g..
+            0x0020:  5018 f53c 184f 0000 6ad3 49bb cf3a b89a  P..<.O..j.I..:..
+            0x0030:  386b 3d51 a7bc cdf2 aa4c f20d cabd 6de7  8k=Q.....L....m.
+            0x0040:  4010 ce6d e13c e76b 0f2e 8b73            @..m.<.k...s
+        1 packet captured
+        11 packets received by filter
+        0 packets dropped by kernel
+14.     Ethernet II, Src: PcsCompu_73:60:cf (08:00:27:73:60:cf), Dst: RealtekU_12:35:02 (52:54:00:12:35:02)
+            Destination: RealtekU_12:35:02 (52:54:00:12:35:02)
+                Address: RealtekU_12:35:02 (52:54:00:12:35:02)
+            .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+            .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+            Source: PcsCompu_73:60:cf (08:00:27:73:60:cf)
+                Address: PcsCompu_73:60:cf (08:00:27:73:60:cf)
+                .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+                .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+            Type: IPv4 (0x0800)
+        Internet Protocol Version 4, Src: 10.0.2.15, Dst: 10.0.2.2
+            0100 .... = Version: 4
+            .... 0101 = Header Length: 20 bytes (5)
+            Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+                0001 00.. = Differentiated Services Codepoint: Unknown (4)
+                .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+            Total Length: 76
+            Identification: 0x9278 (37496)
+            Flags: 0x4000, Don't fragment
+                0... .... .... .... = Reserved bit: Not set
+                .1.. .... .... .... = Don't fragment: Set
+                ..0. .... .... .... = More fragments: Not set
+            Fragment offset: 0
+            Time to live: 64
