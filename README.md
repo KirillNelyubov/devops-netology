@@ -96,18 +96,22 @@
          address 192.168.1.25/24
 4. Агрегация портов в Linux – бондинг. /etc/network/interfaces:
 
+       auto enp2s0
+       iface enp2s0 inet manual
+       
+       auto enp2s1
+       iface enp2s1 inet manual
+       
        auto bond0
        iface bond0 inet static
-           address 10.31.1.5
-           netmask 255.255.255.0
-           network 10.31.1.0
-           gateway 10.31.1.254
-           bond-slaves eth0 eth1
-           bond-mode active-backup
-           bond-miimon 100
-           bond-downdelay 200
-           bond-updelay 200
-5. 8 IP адресов в сети с маской /29, для хостов 6. 32 сети с маской /29 можно получить из сети с маской /24:
+       address 10.10.10.1/24
+       gateway 10.10.10.254
+       dns-nameservers 10.10.10.10 10.10.10.11
+       slaves enp2s0 enp2s1
+       bond-mode 802.3ad
+       bond-lacp-rate slow5
+
+8. IP адресов в сети с маской /29, для хостов 6. 32 сети с маской /29 можно получить из сети с маской /24:
 
     10.10.10.0/29, 10.10.10.8/29, 10.10.10.16/29, 10.10.10.24/29.... 10.10.10.248/29.
 
