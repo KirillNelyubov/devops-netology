@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-29T22:49:57.780Z" agent="5.0 (X11)" etag="FAMAos3oNjH7DBiwKACV" version="15.8.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-29T22:57:32.087Z" agent="5.0 (X11)" etag="IAYHAn_XY7gOakCVxKPA" version="15.8.7" type="github">
   <diagram id="jy4154wR3rhHWz6wOEPa" name="Page-1">
     <mxGraphModel dx="1419" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -40,7 +40,7 @@
         <mxCell id="Ji-FYyuShcsSkrIVP-zc-11" value="" style="shape=mxgraph.cisco.hubs_and_gateways.vpn_gateway;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="290" y="296" width="91" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="Ji-FYyuShcsSkrIVP-zc-12" value="" style="shape=link;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9" target="Ji-FYyuShcsSkrIVP-zc-11">
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-12" value="" style="shape=link;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9" target="Ji-FYyuShcsSkrIVP-zc-35">
           <mxGeometry width="100" relative="1" as="geometry">
             <mxPoint x="530" y="380" as="sourcePoint" />
             <mxPoint x="630" y="380" as="targetPoint" />
@@ -132,6 +132,9 @@
             <mxPoint x="720" y="350" as="sourcePoint" />
             <mxPoint x="700" y="270" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-35" value="" style="shape=mxgraph.cisco.servers.communications_server;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="250" width="54" height="56" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
