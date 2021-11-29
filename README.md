@@ -1,165 +1,134 @@
 # devops-netology
 # Kirill Nelyubov
 
-Ответы на задание к занятию "3.6. Компьютерные сети, лекция 1":
+Ответы на задание к занятию "3.7. Компьютерные сети, лекция 2":
 
-1.     HTTP/1.1 301 Moved Permanently
-       cache-control: no-cache, no-store, must-revalidate
-       location: https://stackoverflow.com/questions
-       x-request-guid: 44160104-0952-4478-958c-28c2219802a1
-       feature-policy: microphone 'none'; speaker 'none'
-       content-security-policy: upgrade-insecure-requests; frame-ancestors 'self' https://stackexchange.com
-       Accept-Ranges: bytes
-       Date: Wed, 24 Nov 2021 20:13:15 GMT
-       Via: 1.1 varnish
-       Connection: close
-       X-Served-By: cache-hhn4059-HHN
-       X-Cache: MISS
-       X-Cache-Hits: 0
-       X-Timer: S1637784795.855645,VS0,VE170
-       Vary: Fastly-SSL
-       X-DNS-Prefetch-Control: off
-       Set-Cookie: prov=0719b663-f214-dc1a-9bf0-01e65a451ee2; domain=.stackoverflow.com; expires=Fri, 01-Jan-2055 00:00:00 GMT; path=/; HttpOnly
+1.     kirill@kirill-mint:~$ ip -c -br link
+       lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+       eno1             UP             74:d0:2b:92:de:df <BROADCAST,MULTICAST,UP,LOWER_UP> 
+       virbr0           DOWN           52:54:00:8a:24:82 <NO-CARRIER,BROADCAST,MULTICAST,UP> 
+       virbr0-nic       DOWN           52:54:00:8a:24:82 <BROADCAST,MULTICAST> 
+ 
+       PS C:\Users\itshk> ipconfig
+
+       Настройка протокола IP для Windows
+
+
+       Адаптер Ethernet Ethernet:
        
-       Connection closed by foreign host.
-   Код перенаправляет с http на https.
+          DNS-суффикс подключения . . . . . : local
+          Локальный IPv6-адрес канала . . . : fe80::15eb:204e:9f45:9b78%3
+          IPv4-адрес. . . . . . . . . . . . : 192.168.3.103
+          Маска подсети . . . . . . . . . . : 255.255.255.0
+          Основной шлюз. . . . . . . . . : fe80::1%3
+                                       fe80::789c:eaff:fe21:f81%3
+                                       192.168.3.5
+2. LLDP – протокол для обмена информацией между соседними устройствами. Пакет в Linux - lldpd.  
 
+       vagrant@vagrant:~$ sudo systemctl enable lldpd && sudo systemctl start lldpd
+       vagrant@vagrant:~$ lldpctl
+       -------------------------------------------------------------------------------
+       LLDP neighbors:
+       -------------------------------------------------------------------------------
+       Interface:    eth1, via: LLDP, RID: 1, Time: 0 day, 00:00:01
+         Chassis:     
+           ChassisID:    mac 74:d0:2b:92:de:df
+           SysName:      kirill-mint
+           SysDescr:     Linux Mint 20.2 Linux 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64
+           MgmtIP:       192.168.3.150
+           MgmtIP:       fe80::14a1:2c59:3dcb:c5ff
+           Capability:   Bridge, on
+           Capability:   Router, on
+           Capability:   Wlan, off
+           Capability:   Station, off
+         Port:        
+           PortID:       mac 74:d0:2b:92:de:df
+           PortDescr:    eno1
+           TTL:          120
+           PMD autoneg:  supported: yes, enabled: yes
+             Adv:          10Base-T, HD: yes, FD: yes
+             Adv:          100Base-TX, HD: yes, FD: yes
+             Adv:          1000Base-T, HD: no, FD: yes
+             MAU oper type: 1000BaseTFD - Four-pair Category 5 UTP, full duplex mode
+       -------------------------------------------------------------------------------
+3. Технология VLAN, 802.1q – стандарт Ethernet. Пакет в Linux - vlan. 
+            
+       vagrant@vagrant:~$ sudo ip link add link eth0 name eth0.100 type vlan id 100
+       vagrant@vagrant:~$ ip -d link show eth0.100
+       4: eth0.100@eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+           link/ether 08:00:27:73:60:cf brd ff:ff:ff:ff:ff:ff promiscuity 0 minmtu 0 maxmtu 65535 
+           vlan protocol 802.1Q id 100 <REORDER_HDR> addrgenmode eui64 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
 
-2.     HTTP/2 200 OK
-       cache-control: private
-       content-type: text/html; charset=utf-8
-       content-encoding: gzip
-       strict-transport-security: max-age=15552000
-       x-frame-options: SAMEORIGIN
-       x-request-guid: 097a0131-3653-4ff6-bd34-114531db6e04
-       feature-policy: microphone 'none'; speaker 'none'
-       content-security-policy: upgrade-insecure-requests; frame-ancestors 'self' https://stackexchange.com
-       accept-ranges: bytes
-       date: Wed, 24 Nov 2021 20:09:40 GMT
-       via: 1.1 varnish
-       x-served-by: cache-hhn4031-HHN
-       x-cache: MISS
-       x-cache-hits: 0
-       x-timer: S1637784581.630904,VS0,VE89
-       vary: Accept-Encoding,Fastly-SSL
-       x-dns-prefetch-control: off
-       X-Firefox-Spdy: h2
-       GET / HTTP/2
-       Host: stackoverflow.com
-       User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0
-       Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-       Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
-       Accept-Encoding: gzip, deflate, br
-       Upgrade-Insecure-Requests: 1
-       Connection: keep-alive
-       Cookie: prov=ecea0b95-250d-59dd-e5da-2fb109a23025; OptanonConsent=isIABGlobal=false&datestamp=Mon+Nov+08+2021+23%3A45%3A45+GMT%2B0300+(%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C+%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%BE%D0%B5+%D0%B2%D1%80%D0%B5%D0%BC%D1%8F)&version=6.10.0&hosts=&landingPath=NotLandingPage&groups=C0003%3A1%2CC0004%3A1%2CC0002%3A1%2CC0001%3A1; OptanonAlertBoxClosed=2021-11-08T20:45:45.535Z; mfnes=dbf5CAMQARoLCNa0vra/upc6EAUyCGJmM2NhYjY0
-       Sec-Fetch-Dest: document
-       Sec-Fetch-Mode: navigate
-       Sec-Fetch-Site: none
-       Sec-Fetch-User: ?1
-       TE: trailers     
-  Время загрузки страницы 960мс. Дольше всего обрабатывался запрос html 525мс.  
+    /etc/systemd/network/00-eth0.100.netdev:
 
-<img src="Снимок экрана в 2021-11-25 00-24-03.png"/>
-
-3. 185.125.114.2
-4. South Business Communication, LTD. AS50042.
-5.     vagrant@vagrant:~$ traceroute -A 8.8.8.8
-       traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
-        1  _gateway (10.0.2.2) [*]  0.177 ms  1.084 ms  1.071 ms
-        2  192.168.3.5 (192.168.3.5) [*]  1.031 ms  1.014 ms  0.902 ms
-        3  192.168.0.1 (192.168.0.1) [*]  1.103 ms  1.449 ms  1.791 ms
-        4  172.16.1.254 (172.16.1.254) [*]  4.742 ms  4.941 ms  5.414 ms
-        5  10.1.1.10 (10.1.1.10) [*]  5.146 ms  5.521 ms  5.699 ms
-        6  10.1.1.13 (10.1.1.13) [*]  6.008 ms  3.387 ms  12.690 ms
-        7  212.110.156.144 (212.110.156.144) [AS28761]  12.839 ms  18.904 ms  18.874 ms
-        8  ae20-323.svsl-30-ar1.miranda-media.net (178.34.189.141) [AS201776]  19.970 ms  19.754 ms ae20-10773.smfl-04-bpe1.miranda-media.net (178.34.152.9) [AS201776]  19.071 ms
-        9  185.64.45.193 (185.64.45.193) [AS201776]  22.197 ms  23.335 ms  24.241 ms
-       10  msk-ix-gw1.google.com (195.208.208.232) [AS5480]  53.948 ms  54.831 ms  54.560 ms
-       11  108.170.250.113 (108.170.250.113) [AS15169]  55.981 ms 108.170.250.99 (108.170.250.99) [AS15169]  44.079 ms 108.170.250.113 (108.170.250.113) [AS15169]  55.729 ms
-       12  * * 172.253.66.116 (172.253.66.116) [AS15169]  57.844 ms
-       13  72.14.238.168 (72.14.238.168) [AS15169]  41.982 ms 108.170.232.251 (108.170.232.251) [AS15169]  46.821 ms 108.170.235.64 (108.170.235.64) [AS15169]  46.348 ms
-       14  216.239.42.21 (216.239.42.21) [AS15169]  55.945 ms 172.253.51.241 (172.253.51.241) [AS15169]  59.507 ms 216.239.62.107 (216.239.62.107) [AS15169]  60.934 ms
-       15  * * *
-       16  * * *
-       17  * * *
-       18  * * *
-       19  * * *
-       20  * * *
-       21  * * *
-       22  * * *
-       23  * * *
-       24  dns.google (8.8.8.8) [AS15169]  46.896 ms  42.655 ms  46.588 ms
-6. Наибольшая задержка происходит на узлах AS15169. 
-7. dig ns dns.google 
+       [NetDev]
+       Name=eth0.100
+       Kind=vlan
        
-       dns.google.		86400	IN	NS	ns1.zdns.google.
-       dns.google.		86400	IN	NS	ns2.zdns.google.
-       dns.google.		86400	IN	NS	ns3.zdns.google.
-       dns.google.		86400	IN	NS	ns4.zdns.google.
-   dig a dns.google
+       [VLAN]
+       Id=100
+   
+   /etc/systemd/network/10-eth0.network: 
 
-       dns.google.		428	IN	A	8.8.8.8
-       dns.google.		428	IN	A	8.8.4.4
-8. dig ptr 8.8.8.8.in-addr.arpa.
+       [Match]
+       Name=eth0
        
-       8.8.8.8.in-addr.arpa.	4100	IN	PTR	dns.google.
+       [Network]
+       DHCP=ipv4
+       VLAN=eth0.100
 
+   /etc/systemd/network/20-eth0.100.network:
 
+       [Match]
+       Name=eth0.100
+       
+       [Network]
+       DHCP=no
+       
+       [Address]
+       Address=192.168.1.25/24
 
+   Или по старому - /etc/network/interfaces:
 
+       auto eth0.100
+       iface eth0.100 inet static
+         vlan-raw-device eth0
+         address 192.168.1.25/24
+4. Агрегация портов в Linux – бондинг. /etc/network/interfaces:
 
+       auto bond0
+       iface bond0 inet static
+           address 10.31.1.5
+           netmask 255.255.255.0
+           network 10.31.1.0
+           gateway 10.31.1.254
+           bond-slaves eth0 eth1
+           bond-mode active-backup
+           bond-miimon 100
+           bond-downdelay 200
+           bond-updelay 200
+5. 8 IP адресов в сети с маской /29, для хостов 6. 32 сети с маской /29 можно получить из сети с маской /24:
 
+    10.10.10.0/29, 10.10.10.8/29, 10.10.10.16/29, 10.10.10.24/29.... 10.10.10.248/29.
 
+6. Для частной сети кроме 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 возможно использовать диапазон 100.64.0.0 — 100.127.255.255, например: 100.100.100.0/26.
+7.     vagrant@vagrant:~$ ip neigh
+       10.0.2.2 dev eth0 lladdr 52:54:00:12:35:02 DELAY
+       192.168.3.5 dev eth1 lladdr 00:1e:06:cb:18:19 STALE
+       10.0.2.3 dev eth0 lladdr 52:54:00:12:35:03 STALE
+       fe80::1 dev eth1 lladdr dc:99:14:0b:9b:a7 router STALE
+       fe80::789c:eaff:fe21:f81 dev eth1 lladdr f8:1a:67:a2:93:d7 router STALE
 
+       C:\Users\sergey.myasnikov>arp -a
+       Интерфейс: 100.100.14.113 --- 0x3
+         адрес в Интернете      Физический адрес      Тип
+         100.100.14.1          00-00-0c-9f-f0-02     динамический
+         100.100.14.8          6c-9c-ed-40-42-c1     динамический
+         100.100.14.9          40-55-39-0c-dd-c1     динамический
+         224.0.0.22            01-00-5e-00-00-16     статический
+         255.255.255.255       ff-ff-ff-ff-ff-ff     статический
 
+       sudo ip neigh del 10.0.2.3 dev eth0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       sudo ip neigh flush all
 
