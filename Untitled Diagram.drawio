@@ -1,1 +1,139 @@
-<mxfile host="app.diagrams.net" modified="2021-11-29T21:46:32.188Z" agent="5.0 (X11)" version="15.8.7" etag="qCGs4kiK50tDwIzgnwMj" type="github"><diagram id="jy4154wR3rhHWz6wOEPa">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-11-29T22:49:57.780Z" agent="5.0 (X11)" etag="FAMAos3oNjH7DBiwKACV" version="15.8.7" type="github">
+  <diagram id="jy4154wR3rhHWz6wOEPa" name="Page-1">
+    <mxGraphModel dx="1419" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-1" value="" style="shape=mxgraph.cisco.routers.router;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="150" width="78" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-2" value="" style="html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.cloud;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="50" y="140" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-4" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1" target="Ji-FYyuShcsSkrIVP-zc-1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="130" y="168" as="sourcePoint" />
+            <mxPoint x="250" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-5" value="internet" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="65" y="166.5" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-7" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_server;" vertex="1" parent="1">
+          <mxGeometry x="30" y="260" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-8" value="" style="shape=link;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-7" target="Ji-FYyuShcsSkrIVP-zc-2">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="90" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-9" value="" style="shape=mxgraph.cisco.switches.layer_3_switch;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="140" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-10" value="" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-1" target="Ji-FYyuShcsSkrIVP-zc-9">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-11" value="" style="shape=mxgraph.cisco.hubs_and_gateways.vpn_gateway;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="290" y="296" width="91" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-12" value="" style="shape=link;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9" target="Ji-FYyuShcsSkrIVP-zc-11">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-13" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="320" as="sourcePoint" />
+            <mxPoint x="280" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-15" value="" style="shape=link;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="610" y="74.34545454545457" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-16" value="" style="shape=mxgraph.cisco.security.guard;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="381" y="290" width="88" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-17" value="" style="shape=mxgraph.cisco.servers.file_server;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="590" y="40" width="43" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-18" value="" style="shape=mxgraph.cisco.switches.layer_3_switch;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="144.5" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-19" value="" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9" target="Ji-FYyuShcsSkrIVP-zc-18">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-20" value="" style="shape=mxgraph.cisco.computers_and_peripherals.pc;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="830" y="141.5" width="78" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-21" value="" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.16;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-18" target="Ji-FYyuShcsSkrIVP-zc-20">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-22" value="" style="shape=mxgraph.cisco.computers_and_peripherals.workstation;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="830" y="10" width="83" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-23" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-18" target="Ji-FYyuShcsSkrIVP-zc-22">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-24" value="" style="shape=mxgraph.cisco.misc.tv;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="580" y="296" width="53" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-25" value="" style="shape=mxgraph.cisco.misc.tv;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="14.5" width="53" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-26" value="" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.08;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-25" target="Ji-FYyuShcsSkrIVP-zc-9">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-27" value="" style="shape=link;html=1;rounded=0;exitX=0.95;exitY=0.94;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.09;entryY=0.07;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ji-FYyuShcsSkrIVP-zc-9" target="Ji-FYyuShcsSkrIVP-zc-24">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="530" y="380" as="sourcePoint" />
+            <mxPoint x="630" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-28" value="" style="shape=mxgraph.cisco.misc.dual_mode;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="659" y="208.5" width="75" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-30" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="913" y="134" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-31" value="" style="shape=mxgraph.cisco.computers_and_peripherals.printer;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="290" width="91" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-32" value="" style="html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.comm_link_edge;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="740" y="250" as="sourcePoint" />
+            <mxPoint x="830" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-33" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.laptop;" vertex="1" parent="1">
+          <mxGeometry x="680" y="370" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="Ji-FYyuShcsSkrIVP-zc-34" value="" style="html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.comm_link_edge;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="720" y="350" as="sourcePoint" />
+            <mxPoint x="700" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
