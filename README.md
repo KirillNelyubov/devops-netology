@@ -83,4 +83,6 @@
        UNCONN     0          0              [fe80::a00:27ff:fe91:ec4]%eth1:546                  [::]:*         users:(("systemd-network",pid=1204,fd=18))                    
        UNCONN     0          0                                        [::]:111                  [::]:*         users:(("rpcbind",pid=595,fd=7),("systemd",pid=1,fd=120)) 
    Используемые сокеты IPv4: 161, 53, 68, 111; IPv6: 161, 546, 111. Сервисы соответственно: snmpd, systemd-resolve, systemd-network, rpcbind(systemd).
-5. ![](Untitled Diagram.drawio)
+
+ 
+6. ![](Untitled Diagram.drawio.png) 
