@@ -85,4 +85,4 @@
    Используемые сокеты IPv4: 161, 53, 68, 111; IPv6: 161, 546, 111. Сервисы соответственно: snmpd, systemd-resolve, systemd-network, rpcbind(systemd).
 
  
-6. ![](Untitled Diagram.drawio.png) 
+6. <img src="Untitled Diagram.drawio.png"/> 
