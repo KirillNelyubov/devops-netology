@@ -1,88 +1,116 @@
 # devops-netology
 # Kirill Nelyubov
 
-Ответы на задание к занятию "3.8. Компьютерные сети, лекция 3":
+Ответы на задание к занятию "3.9. Элементы безопасности информационных систем":
 
-1.     route-views>show ip route 185.125.114.2
-       Routing entry for 185.125.112.0/22
-         Known via "bgp 6447", distance 20, metric 0
-         Tag 6939, type external
-         Last update from 64.71.137.241 5w6d ago
-         Routing Descriptor Blocks:
-         * 64.71.137.241, from 64.71.137.241, 5w6d ago
-             Route metric is 0, traffic share count is 1
-             AS Hops 7
-             Route tag 6939
-             MPLS label: none
-       route-views>show bgp 185.125.114.2             
-       BGP routing table entry for 185.125.112.0/22, version 1156393389
-       Paths: (24 available, best #23, table default)
-         Not advertised to any peer
-         Refresh Epoch 1
-         4901 6079 3257 12389 201776 28761 50042 50042 50042, (aggregated by 50042 185.125.112.1)
-           162.250.137.254 from 162.250.137.254 (162.250.137.254)
-             Origin IGP, localpref 100, valid, external
-             Community: 65000:10100 65000:10300 65000:10400
-             path 7FE07FD900E8 RPKI State not found
-             rx pathid: 0, tx pathid: 0
-         Refresh Epoch 3
-         3303 12389 201776 28761 50042 50042 50042, (aggregated by 50042 185.125.112.1)
-           217.192.89.50 from 217.192.89.50 (138.187.128.158)
-             Origin IGP, localpref 100, valid, external
-             Community: 3303:1004 3303:1006 3303:1030 3303:3056 28761:1008 65500:1 65500:101 65500:102 65500:103 65500:201 65500:205
-             path 7FE0A1BABB98 RPKI State not found
-             rx pathid: 0, tx pathid: 0
-         Refresh Epoch 1
-         7660 2516 12389 201776 28761 50042 50042 50042, (aggregated by 50042 185.125.112.1)
-           203.181.248.168 from 203.181.248.168 (203.181.248.168)
-             Origin IGP, localpref 100, valid, external
-             Community: 2516:1050 7660:9003
-             path 7FE051E029F0 RPKI State not found
-             rx pathid: 0, tx pathid: 0
-         Refresh Epoch 1
-         3267 1299 12389 201776 28761 50042 50042 50042, (aggregated by 50042 185.125.112.1)
-           194.85.40.15 from 194.85.40.15 (185.141.126.1)
-             Origin IGP, metric 0, localpref 100, valid, external
-             path 7FE0B500B560 RPKI State not found
-        --More-- 
+1. <img src="Снимок экрана в 2021-12-09 00-58-08.png"/>
+2. lkk
+3. <img src="/home/kirill/git/devops-netology/Снимок экрана в 2021-12-09 18-11-27.png"/>
+   <img src="/home/kirill/git/devops-netology/Снимок экрана в 2021-12-09 18-11-39.png"/>
 
-2.     vagrant@vagrant:~$ cat /etc/network/interfaces
-       # interfaces(5) file used by ifup(8) and ifdown(8)
-       # Include files from /etc/network/interfaces.d:
-       source-directory /etc/network/interfaces.d
+4.     root@vagrant:~/testssl.sh# ./testssl.sh -U --sneaky https://duckduckgo.com
+      
+       ###########################################################
+          testssl.sh       3.1dev from https://testssl.sh/dev/
+          (0118603 2021-12-09 13:16:50 -- )
+      
+            This program is free software. Distribution and
+                   modification under GPLv2 permitted.
+            USAGE w/o ANY WARRANTY. USE IT AT YOUR OWN RISK!
+      
+             Please file bugs @ https://testssl.sh/bugs/
+      
+       ###########################################################
+    
+       Using "OpenSSL 1.0.2-chacha (1.0.2k-dev)" [~183 ciphers]
+       on vagrant:./bin/openssl.Linux.x86_64
+       (built: "Jan 18 17:12:17 2019", platform: "linux-x86_64")
+      
+      
+       Start 2021-12-09 15:23:38        -->> 40.114.177.156:443 (duckduckgo.com) <<--
+      
+       rDNS (40.114.177.156):  --
+       Service detected:       HTTP
+      
+      
+       Testing vulnerabilities 
+      
+       Heartbleed (CVE-2014-0160)                not vulnerable (OK), no heartbeat extension
+       CCS (CVE-2014-0224)                       not vulnerable (OK)
+       Ticketbleed (CVE-2016-9244), experiment.  not vulnerable (OK)
+       ROBOT                                     not vulnerable (OK)
+       Secure Renegotiation (RFC 5746)           supported (OK)
+       Secure Client-Initiated Renegotiation     not vulnerable (OK)
+       CRIME, TLS (CVE-2012-4929)                not vulnerable (OK)
+       BREACH (CVE-2013-3587)                    potentially NOT ok, "br gzip" HTTP compression detected. - only supplied "/" tested
+                                                 Can be ignored for static pages or if no secrets in the page
+       POODLE, SSL (CVE-2014-3566)               not vulnerable (OK)
+       TLS_FALLBACK_SCSV (RFC 7507)              No fallback possible (OK), no protocol below TLS 1.2 offered
+       SWEET32 (CVE-2016-2183, CVE-2016-6329)    not vulnerable (OK)
+       FREAK (CVE-2015-0204)                     not vulnerable (OK)
+       DROWN (CVE-2016-0800, CVE-2016-0703)      not vulnerable on this host and port (OK)
+                                                 make sure you don't use this certificate elsewhere with SSLv2 enabled services
+                                                 https://censys.io/ipv4?q=A5D67800EBB234DB3814A0FA562D57DDC6F3D55FE999012D67CCCE96EEDEC9D5 could help you to find out
+       LOGJAM (CVE-2015-4000), experimental      not vulnerable (OK): no DH EXPORT ciphers, no DH key detected with <= TLS 1.2
+       BEAST (CVE-2011-3389)                     not vulnerable (OK), no SSL3 or TLS1
+       LUCKY13 (CVE-2013-0169), experimental     potentially VULNERABLE, uses cipher block chaining (CBC) ciphers with TLS. Check patches
+       Winshock (CVE-2014-6321), experimental    not vulnerable (OK)
+       RC4 (CVE-2013-2566, CVE-2015-2808)        no RC4 ciphers detected (OK)
+      
+      
+       Done 2021-12-09 15:24:15 [  46s] -->> 40.114.177.156:443 (duckduckgo.com) <<--
+5.     vagrant@vagrant:~$ ssh-keygen
+       Generating public/private rsa key pair.
+       Enter file in which to save the key (/home/vagrant/.ssh/id_rsa): 
+       Enter passphrase (empty for no passphrase): 
+       Enter same passphrase again: 
+       Your identification has been saved in /home/vagrant/.ssh/id_rsa
+       Your public key has been saved in /home/vagrant/.ssh/id_rsa.pub
+       The key fingerprint is:
+       SHA256:xTTQf3SD3yJj0MmDJd+s5aw4EDddZFx2FejLD6dG6Hk vagrant@vagrant
+       The key's randomart image is:
+       +---[RSA 3072]----+
+       |        .o+=.+*oB|
+       |         o+==Booo|
+       |        . =o+o=.o|
+       |         + .=*o..|
+       |        S  .+++. |
+       |         . o * . |
+       |          + + =  |
+       |           + E . |
+       |            o    |
+       +----[SHA256]-----+
+       vagrant@vagrant:~$ ssh-copy-id kirill@192.168.3.150
+       /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/vagrant/.ssh/id_rsa.pub"
+       The authenticity of host '192.168.3.150 (192.168.3.150)' can't be established.
+       ECDSA key fingerprint is SHA256:+IAXssdwADp7fwK9xkfX5aTvHZ/9fRSWnIulcWXFCu0.
+       Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+       /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+       /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+       kirill@192.168.3.150's password: 
        
-       auto dummy0
-       iface dummy0 inet static
-           address 10.2.2.2/32
-           pre-up ip link add dummy0 type dummy
-           post-down ip link del dummy0
-       vagrant@vagrant:~$ ip route
-       default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100 
-       10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 
-       10.0.2.2 dev eth0 proto dhcp scope link src 10.0.2.15 metric 100 
-       10.2.2.2 dev dummy0 scope link 
-       10.8.0.0/24 via 192.168.3.5 dev eth1 
-       192.168.3.0/24 dev eth1 proto kernel scope link src 192.168.3.107 
-       192.168.3.5 dev eth1 proto dhcp scope link src 192.168.3.107 metric 100 
-3.     vagrant@vagrant:~$ sudo ss -ltpn
-       State        Recv-Q       Send-Q             Local Address:Port              Peer Address:Port       Process                                                          
-       LISTEN       0            4096                     0.0.0.0:111                    0.0.0.0:*           users:(("rpcbind",pid=595,fd=4),("systemd",pid=1,fd=117))       
-       LISTEN       0            4096               127.0.0.53%lo:53                     0.0.0.0:*           users:(("systemd-resolve",pid=596,fd=13))                       
-       LISTEN       0            128                      0.0.0.0:22                     0.0.0.0:*           users:(("sshd",pid=827,fd=3))                                   
-       LISTEN       0            4096                        [::]:111                       [::]:*           users:(("rpcbind",pid=595,fd=6),("systemd",pid=1,fd=119))       
-       LISTEN       0            128                         [::]:22                        [::]:*           users:(("sshd",pid=827,fd=4))
-    Открытые порты IPv4: 111, 53, 22; IPv6: 111, 22. Сервисы соответственно: rpcbind(systemd), systemd-resolve, sshd.
-4.     vagrant@vagrant:~$ sudo ss -lupn
-       State      Recv-Q     Send-Q                          Local Address:Port         Peer Address:Port     Process                                                        
-       UNCONN     0          0                                   127.0.0.1:161               0.0.0.0:*         users:(("snmpd",pid=767,fd=6))                                
-       UNCONN     0          0                               127.0.0.53%lo:53                0.0.0.0:*         users:(("systemd-resolve",pid=596,fd=12))                     
-       UNCONN     0          0                          192.168.3.107%eth1:68                0.0.0.0:*         users:(("systemd-network",pid=1204,fd=21))                    
-       UNCONN     0          0                              10.0.2.15%eth0:68                0.0.0.0:*         users:(("systemd-network",pid=1204,fd=23))                    
-       UNCONN     0          0                                     0.0.0.0:111               0.0.0.0:*         users:(("rpcbind",pid=595,fd=5),("systemd",pid=1,fd=118))     
-       UNCONN     0          0                                       [::1]:161                  [::]:*         users:(("snmpd",pid=767,fd=7))                                
-       UNCONN     0          0              [fe80::a00:27ff:fe91:ec4]%eth1:546                  [::]:*         users:(("systemd-network",pid=1204,fd=18))                    
-       UNCONN     0          0                                        [::]:111                  [::]:*         users:(("rpcbind",pid=595,fd=7),("systemd",pid=1,fd=120)) 
-   Используемые сокеты IPv4: 161, 53, 68, 111; IPv6: 161, 546, 111. Сервисы соответственно: snmpd, systemd-resolve, systemd-network, rpcbind(systemd).
+       Number of key(s) added: 1
+       
+       Now try logging into the machine, with:   "ssh 'kirill@192.168.3.150'"
+       and check to make sure that only the key(s) you wanted were added.
+       
+       vagrant@vagrant:~$ ssh kirill@192.168.3.150
+       
+       kirill@kirill-mint:~$ 
+6.     vagrant@vagrant:~$ mv .ssh/id_rsa .ssh/mint.key
+       vagrant@vagrant:~$ nano .ssh/config
+       vagrant@vagrant:~$ cat .ssh/config
+       Host mint
+         HostName 192.168.3.150
+         IdentityFile ~/.ssh/mint.key
+         User kirill
+       vagrant@vagrant:~$ chmod 600 .ssh/config
+       vagrant@vagrant:~$ ssh mint
+       
+       Last login: Thu Dec  9 18:34:17 2021 from 192.168.3.107
+       kirill@kirill-mint:~$
+7. 
 
- 
-6. <img src="Untitled Diagram.drawio.png"/> 
+
+
+
