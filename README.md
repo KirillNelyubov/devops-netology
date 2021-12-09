@@ -7,8 +7,8 @@
 2. Выполнено. Принт-скрин "Google authenticator"а сделать не получается, доступ запрещён.
 
 
-3. <img src="/home/kirill/git/devops-netology/Снимок экрана в 2021-12-09 18-11-27.png"/>
-   <img src="/home/kirill/git/devops-netology/Снимок экрана в 2021-12-09 18-11-39.png"/>
+3. <img src="Снимок экрана в 2021-12-09 18-11-27.png"/>
+   <img src="Снимок экрана в 2021-12-09 18-11-39.png"/>
 
 4.     root@vagrant:~/testssl.sh# ./testssl.sh -U --sneaky https://duckduckgo.com
       
