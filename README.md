@@ -31,16 +31,11 @@
          executable location = /usr/bin/ansible
          python version = 3.8.10 (default, Nov 26 2021, 20:14:08) [GCC 9.3.0]
 ## Необязательная задача 4
-   Возникла ошибка при попытке Ansible зайти на VM:
-
-    kirill@kirill-mint:~/VirtualBox VMs/vagrant$ vagrant up
+    kirill@kirill-mint:~/test/vagrant$ vagrant up
     Bringing machine 'server1.netology' up with 'virtualbox' provider...
     ==> server1.netology: Importing base box 'bento/ubuntu-20.04'...
     ==> server1.netology: Matching MAC address for NAT networking...
     ==> server1.netology: Checking if box 'bento/ubuntu-20.04' version '202107.28.0' is up to date...
-    ==> server1.netology: A newer version of the box 'bento/ubuntu-20.04' for provider 'virtualbox' is
-    ==> server1.netology: available! You currently have version '202107.28.0'. The latest is version
-    ==> server1.netology: '202112.19.0'. Run `vagrant box update` to update.
     ==> server1.netology: Setting the name of the VM: server1.netology
     ==> server1.netology: Clearing any previously set network interfaces...
     ==> server1.netology: Preparing network interfaces based on configuration...
@@ -69,7 +64,7 @@
     ==> server1.netology: Setting hostname...
     ==> server1.netology: Configuring and enabling network interfaces...
     ==> server1.netology: Mounting shared folders...
-        server1.netology: /vagrant => /home/kirill/VirtualBox VMs/vagrant
+        server1.netology: /vagrant => /home/kirill/test/vagrant
     ==> server1.netology: Running provisioner: ansible...
     Vagrant has automatically selected the compatibility mode '2.0'
     according to the Ansible version installed (2.9.6).
@@ -82,11 +77,47 @@
     PLAY [nodes] *******************************************************************
     
     TASK [Gathering Facts] *********************************************************
-    fatal: [server1.netology]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname vms/vagrant/.vagrant/machines/server1.netology/virtualbox/private_key: Name or service not known", "unreachable": true}
+    ok: [server1.netology]
+    
+    TASK [Create directory for ssh-keys] *******************************************
+    changed: [server1.netology]
+    
+    TASK [Adding rsa-key in /root/.ssh/authorized_keys] ****************************
+    changed: [server1.netology]
+    
+    TASK [Checking DNS] ************************************************************
+    changed: [server1.netology]
+    
+    TASK [Installing tools] ********************************************************
+    ok: [server1.netology] => (item=['git', 'curl'])
+    
+    TASK [Installing docker] *******************************************************
+    changed: [server1.netology]
+    
+    TASK [Add the current user to docker group] ************************************
+    changed: [server1.netology]
     
     PLAY RECAP *********************************************************************
-    server1.netology           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+    server1.netology           : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
     
-    Ansible failed to complete successfully. Any error output should be
-    visible above. Please fix these errors and try again.
-  
+    kirill@kirill-mint:~/test/vagrant$ vagrant ssh
+    Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
+    
+     * Documentation:  https://help.ubuntu.com
+     * Management:     https://landscape.canonical.com
+     * Support:        https://ubuntu.com/advantage
+    
+      System information as of Wed 26 Jan 2022 01:04:22 AM UTC
+    
+      System load:  0.88              Users logged in:          0
+      Usage of /:   3.2% of 61.31GB   IPv4 address for docker0: 172.17.0.1
+      Memory usage: 20%               IPv4 address for eth0:    10.0.2.15
+      Swap usage:   0%                IPv4 address for eth1:    192.168.192.11
+      Processes:    109
+    
+    
+    This system is built by the Bento project by Chef Software
+    More information can be found at https://github.com/chef/bento
+    Last login: Wed Jan 26 01:04:08 2022 from 10.0.2.2
+    vagrant@server1:~$ docker ps
+    CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
