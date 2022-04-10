@@ -1,49 +1,15 @@
 # devops-netology
 # Kirill Nelyubov
 
-# Домашнее задание к занятию "6.3. MySQL"
+# Домашнее задание к занятию "6.4. PostgreSQL"
 
 ## Обязательная задача 1
-    mysql> \s
-    --------------
-    mysql  Ver 8.0.28 for Linux on x86_64 (MySQL Community Server - GPL)
-    ...
-    Server version:		8.0.28 MySQL Community Server - GPL
-
-    mysql> SHOW TABLES;
-    +-------------------+
-    | Tables_in_test_db |
-    +-------------------+
-    | orders            |
-    +-------------------+
-    1 row in set (0.01 sec)
-
-    mysql> SELECT COUNT(*) FROM orders WHERE price > 300;
-    +----------+
-    | COUNT(*) |
-    +----------+
-    |        1 |
-    +----------+
-    1 row in set (0.01 sec)
-
+1. \l[+]   [PATTERN]      list databases
+2. \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo}
+3. \dt[S+] [PATTERN]      list tables
+4. \d[S+]  NAME           describe table, view, sequence, or index
+5. \q                     quit psql
 ## Обязательная задача 2
-    mysql> CREATE USER 'test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test-pass'
-        ->  WITH MAX_QUERIES_PER_HOUR 100
-        ->  PASSWORD EXPIRE INTERVAL 180 DAY
-        ->  FAILED_LOGIN_ATTEMPTS 3
-        ->  ATTRIBUTE '{"First Name":"James","Last Name":"Pretty"}';
-    Query OK, 0 rows affected (0.06 sec)
-
-    mysql> GRANT SELECT ON test_db.* TO 'test'@'localhost';
-    Query OK, 0 rows affected, 1 warning (0.02 sec)
-    
-    mysql> SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER='test';
-    +------+-----------+------------------------------------------------+
-    | USER | HOST      | ATTRIBUTE                                      |
-    +------+-----------+------------------------------------------------+
-    | test | localhost | {"Last Name": "Pretty", "First Name": "James"} |
-    +------+-----------+------------------------------------------------+
-    1 row in set (0.00 sec)
 
 ## Обязательная задача 3
     mysql> SHOW TABLE STATUS \G;
