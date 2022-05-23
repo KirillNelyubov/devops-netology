@@ -1,8 +1,30 @@
 provider "yandex" {
-  token     = "${var.yandex_token}"
+  token     = var.yandex_token
   cloud_id  = "b1gpvkvq1p3nlvg66tkf"
-  folder_id = "b1gj0hus3fud83e9kr7v"
+#  folder_id = "b1gj0hus3fud83e9kr7v"
   zone      = "ru-central1-a"
+}
+
+module "vpc" {
+  source  = "hamnsk/vpc/yandex"
+  version = "0.5.0"
+  description = "managed by terraform"
+  create_folder = length(var.yc_folder_id) > 0 ? false : true
+  name = terraform.workspace
+  subnets = local.vpc_subnets[terraform.workspace]
+}
+
+locals {
+  instances_count_map = {
+    "stage" = 0
+    "prod" = 1
+  }
+}
+
+resource "yandex_storage_bucket" "test" {
+  access_key = var.key_id
+  secret_key = var.key
+  bucket = "mybucket"
 }
 
 resource "yandex_compute_instance" "vm-1" {
